@@ -4,7 +4,11 @@
   "properties": {
     "address": {
       "type": "object",
-      "$ref": "#address.json"
+      "$ref": "address.json"
+    },
+    "account": {
+      "type": "object",
+      "$ref": "account.json"
     },
     "name": {
       "type": "string"

@@ -14,7 +14,7 @@ refaker({
     throw err;
   }
 
-  console.log('refs:', refs);
+  console.log('refs:', JSON.stringify(refs, null, 2));
   console.log('schemas:', JSON.stringify(schemas, null, 2));
   
 });
