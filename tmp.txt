@@ -1,0 +1,4 @@
+  "id": "file:///Users/justin/json-schema/user/schemas/user.json",
+  "id": "schemas/user.json",
+
+  "$schema": "http://json-schema.org/draft-04/schema#",
