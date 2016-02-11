@@ -8,5 +8,9 @@
     "dateRegistered": {
       "type": "integer"
     }
-  }
+  },
+  "required": [
+    "accountType",
+    "dateRegistered"
+  ]
 }

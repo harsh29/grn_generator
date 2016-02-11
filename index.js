@@ -1,4 +1,5 @@
 var path = require('path');
+var jsf = require('json-schema-faker');
 var refaker = require('refaker');
 
 var schemasDirPath = path.join(__dirname, 'schemas');
@@ -17,4 +18,10 @@ refaker({
   console.log('refs:', JSON.stringify(refs, null, 2));
   console.log('schemas:', JSON.stringify(schemas, null, 2));
   
+  var sample = jsf(schemas, refs);
+
+  console.log('---------');
+  console.log('---------');
+
+  console.log('sample:', JSON.stringify(sample, null, 2));
 });

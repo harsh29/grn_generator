@@ -13,5 +13,10 @@
     "name": {
       "type": "string"
     }
-  }
+  },
+  "required": [
+    "address",
+    "account",
+    "name"
+  ]
 }
