@@ -3,7 +3,7 @@ var jsf = require('json-schema-faker');
 var refaker = require('refaker');
 
 var schemasDirPath = path.join(__dirname, 'schemas');
-var schemaPath = path.join(__dirname, 'schemas', 'user.json');
+var schemaPath = path.join(__dirname, 'schemas', 'GRN.json');
 var schema = require(schemaPath);
 
 refaker({

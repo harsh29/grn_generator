@@ -1,0 +1,63 @@
+{
+  "$schema": "http://elementum.com/schemas/data-ingest/v2/GRN.json",
+  "$meta": {
+    "CustomerName": "elecotest",
+    "PartnerName": "elecotest",
+    "InputDir": "feed/json/elecotest/20161109/GRN/elecotest/elecotest",
+    "SourceFileName": "GRN_FTS_20161109010101.001_FTS_elecotest_elecotest_RS_GRN-20161109-DUPE-7_1.json",
+    "FileTimeStamp": "2016-11-09T01:03:23.000Z",
+    "FileId": "a3676007-ea89-4e67-b2b5-ec2f3b285470"
+  },
+  "header": {
+    "trackingId": "GRN-20161109-DUPE-7",
+    "goodsReceiptId": "goods-123456",
+    "carrierCode": "dhl",
+    "carrierTrackingId": ["dhl-GRN-20161109-DUPE-7"],
+    "billOfLading": ["bol-20161109"],
+    "containerId": ["cont1", "cont2"],
+    "parties": {
+      "shipFrom": {
+        "siteId": "MP-ACME-HONGKONG-2",
+        "location": {
+          "UNLoCode": "ABCDE",
+          "address": {
+            "companyName": "Google HQ",
+            "companyName2": "",
+            "addressLocality": "Courcelles",
+            "addressRegion": "",
+            "country": "BE",
+            "postalCode": "6180",
+            "streetAddress1": "Rue du Luxembourg",
+            "streetAddress2": ""
+          },
+          "coords": {
+            "lat": "1123",
+            "lng": "1234"
+          }
+        }
+      },
+      "shipTo": {
+        "siteId": "MP-ACME-NY-2",
+        "location": {
+          "UNLoCode": "ABCDE",
+          "address": {
+            "addressLocality": "Norderstedt",
+            "addressRegion": "",
+            "companyName": "Elecotest",
+            "companyName2": "",
+            "country": "DE",
+            "postalCode": "22851",
+            "streetAddress1": "",
+            "streetAddress2": ""
+          },
+          "coords": {
+            "lat": "1123",
+            "lng": "1234"
+          }
+        }
+      }
+    }
+  },
+  "lines": [
+  ]
+}

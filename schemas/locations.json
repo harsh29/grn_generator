@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Collection of object types specifying geographical locations",
+  "definitions": {
+    "address": {
+      "type": "object",
+      "description": "Specifies address of the location. TODO: determine which fields are required w/ DLM tool",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "companyName2": {
+          "type": "string"
+        },
+        "streetAddress1": {
+          "type": "string"
+        },
+        "streetAddress2": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        }
+      }
+    },
+    "UNLoCode": {
+      "type": "string",
+      "description": "UN LOCODE of the location.",
+      "minLength": 5,
+      "maxLength": 5
+    },
+    "coordinates": {
+      "type": "object",
+      "description": "Lat/Lng coordinates of the location",
+      "properties": {
+        "lat": {
+          "type": "string",
+          "title": "Latitude",
+          "escm-type": {
+            "type": "float",
+            "fatal": true
+          }
+        },
+        "lng": {
+          "type": "string",
+          "title": "Longitude",
+          "escm-type": {
+            "type": "float",
+            "fatal": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "description": "Specifies geographical location",
+      "properties": {
+        "UNLoCode": { "$ref": "#/definitions/UNLoCode" },
+        "address": { "$ref": "#/definitions/address" },
+        "coords": { "$ref": "#/definitions/coordinates" }
+      },
+      "anyOf": [
+        {
+          "required": ["address"]
+        },
+        {
+          "required": ["UNLoCode"]
+        },
+        {
+          "required": ["coords"]
+        }
+      ]
+    }
+  }
+}

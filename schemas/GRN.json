@@ -1,0 +1,249 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "title": "GRN schema",
+  "description": "JSON schema for Goods Received Notification (GRN) data",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Specifies event type and schema version. TODO: do we want to enforce enum with available values?",
+      "enum": [
+        "http://elementum.com/schemas/data-ingest/v2/GRN.json"
+      ]
+    },
+    "$meta": {
+      "$ref": "meta.json"
+    },
+    "header": {
+      "type": "object",
+      "title": "Header",
+      "description": "General GRN header information",
+      "properties": {
+        "trackingId": {
+          "type": "string",
+          "description": "Used to link this GRN to ASN header.",
+          "pattern": "^GRN-[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+          "minLength": 2
+        },
+        "goodsReceiptId": {
+          "type": "string",
+          "description": "Identifier of the goods receipt document.",
+          "pattern": "^REC-ID-[a-fA-F0-9]{16}$"
+        },
+        "carrierCode": {
+          "type": "string",
+          "description": "Which carrier handled the shipment. Applies to all lines unless overridden",
+          "pattern": "dhl|fedex|ups|usps"
+        },
+        "carrierTrackingId": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^carrier-grn-[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{2}$"
+          }
+        },
+        "billOfLading": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "containerId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parties": {
+          "type": "object",
+          "description": "Ship From, ship To and other sites/parties",
+          "properties": {
+            "shipFrom": {
+              "$ref": "site.json"
+            },
+            "shipTo": {
+              "$ref": "site.json"
+            }
+          }
+        }
+      },
+      "required": [
+        "trackingId", "carrierTrackingId", "billOfLading"
+      ]
+    },
+    "lines": {
+      "type": "array",
+      "title": "Lines",
+      "description": "Array of GRN lines info",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "title": "GRN Line",
+        "description": "GRN Line detailed info",
+        "properties": {
+          "lineStatus": {
+            "type": "string",
+            "description": "Received at the Dock (OH)\nStarted Receiving Process (RS)\nCompleted Receiving Process (RE)\nQuality Hold Released (QR)\nPutaway in-stock (ST)",
+            "enum": [
+              "OH",
+              "RS",
+              "RE",
+              "QR",
+              "ST"
+            ]
+          },
+          "lineStatusDateTime": {
+            "type": "string",
+            "description": "Status date/time. This is one of the few required fields",
+            "escm-type": {
+              "type": "date",
+              "fatal": true
+            }
+          },
+          "requestedDeliveryDate": {
+            "type": "string",
+            "escm-type": {
+              "type": "date",
+              "fatal": false
+            }
+          },
+          "promisedDeliveryDate": {
+            "type": "string",
+            "escm-type": {
+              "type": "date",
+              "fatal": false
+            }
+          },
+          "scheduledDeliveryDate": {
+            "type": "string",
+            "escm-type": {
+              "type": "date",
+              "fatal": false
+            }
+          },
+          "lineItemId": {
+            "type": "string",
+            "description": "GRN line item id (aka line number)"
+          },
+          "asnLineItemId": {
+            "type": "string",
+            "description": "Corresponding line number from ASN."
+          },
+          "materialNumber": {
+            "type": "string",
+            "description": "Material or goods identifier - what was shipped/received."
+          },
+          "materialDescription": {
+            "type": "string"
+          },
+          "lotBatchNumber": {
+            "type": "string",
+            "description": "Lot/Batch number"
+          },
+          "salesOrderNumber": {
+            "type": "string",
+            "description": "SO only"
+          },
+          "salesOrderLineItemId": {
+            "type": "string",
+            "description": "SO line number"
+          },
+          "purchaseOrderNumber": {
+            "type": "string",
+            "description": "PO or STO"
+          },
+          "purchaseOrderLineItemId": {
+            "type": "string",
+            "description": "PO or STO line number"
+          },
+          "deliveryNumber": {
+            "type": "string",
+            "description": "Delivery document number"
+          },
+          "deliveryLineItemId": {
+            "type": "string",
+            "description": "Delivery document line item id"
+          },
+          "shipperInvoiceNumber": {
+            "type": "string"
+          },
+          "shipperInvoiceLineItemId": {
+            "type": "string"
+          },
+          "carrierCode": {
+            "type": "string",
+            "description": "If line was handled by different carrier than specified in the header. Can be omitted if the same as in header"
+          },
+          "storageLocation": {
+            "type": "string",
+            "description": "Sub-site, maps to master data. TODO: clarify if our master data has concept of subsites"
+          },
+          "palletId": {
+            "type": "string",
+            "description": "A flat thing used by forklift or front loader or a crane to load goods"
+          },
+          "quantityOrdered": {
+            "type": "string",
+            "escm-type": {
+              "type": "float",
+              "fatal": false
+            }
+          },
+          "quantityOrderedUom": {
+            "type": "string"
+          },
+          "quantityReceived": {
+            "type": "string",
+            "escm-type": {
+              "type": "float",
+              "fatal": false
+            }
+          },
+          "quantityReceivedUom": {
+            "type": "string"
+          },
+          "quantityRejected": {
+            "type": "string",
+            "escm-type": {
+              "type": "float",
+              "fatal": false
+            }
+          },
+          "quantityRejectedUom": {
+            "type": "string"
+          },
+          "quantityOnHold": {
+            "type": "string",
+            "escm-type": {
+              "type": "float",
+              "fatal": false
+            }
+          },
+          "quantityOnHoldUom": {
+            "type": "string"
+          },
+          "quantityReturned": {
+            "type": "string",
+            "escm-type": {
+              "type": "float",
+              "fatal": false
+            }
+          },
+          "quantityReturnedUom": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lineStatus",
+          "lineStatusDateTime"
+        ]
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "$meta",
+    "header",
+    "lines"
+  ]
+}

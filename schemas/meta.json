@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "meta",
+  "description": "JSON schema for $meta metadata, common for all event types",
+  "properties": {
+    "CustomerName": {
+      "type": "string",
+      "minLength": 2
+    },
+    "PartnerName": {
+      "type": "string",
+      "minLength": 2
+    },
+    "InputDir": {
+      "type": "string",
+      "description": "Folder where original customer file was located",
+      "minLength": 2
+    },
+    "SourceFileName": {
+      "type": "string",
+      "description": "Name of the original customer file",
+      "minLength": 2
+    },
+    "FileTimeStamp": {
+      "type": "string",
+      "description": "Timestamp when Elementum received a customer file (approximate). Determines the order of precedence",
+      "escm-type": {
+        "type": "date",
+        "fatal": true
+      }
+    },
+    "FileId": {
+      "type": "string",
+      "description": "Unique file id. Has to be a UUID"
+    },
+    "errors": {
+      "type": "object",
+      "description": "Validation errors"
+    }
+  },
+  "required": [
+    "CustomerName",
+    "PartnerName",
+    "InputDir",
+    "SourceFileName",
+    "FileTimeStamp",
+    "FileId"
+  ]
+}

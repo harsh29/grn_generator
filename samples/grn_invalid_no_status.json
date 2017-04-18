@@ -1,0 +1,109 @@
+{
+  "$schema": "http://elementum.com/schemas/data-ingest/v2/GRN.json",
+  "$meta": {
+    "CustomerName": "elecotest",
+    "PartnerName": "elecotest",
+    "InputDir": "feed/json/elecotest/20161109/GRN/elecotest/elecotest",
+    "SourceFileName": "GRN_FTS_20161109010101.001_FTS_elecotest_elecotest_RS_GRN-20161109-DUPE-7_1.json",
+    "FileTimeStamp": "2016-11-09T01:03:23.000Z",
+    "FileId": "a3676007-ea89-4e67-b2b5-ec2f3b285470"
+  },
+  "header": {
+    "trackingId": "GRN-20161109-DUPE-7",
+    "goodsReceiptId": "goods-123456",
+    "carrierCode": "dhl",
+    "carrierTrackingId": ["dhl-GRN-20161109-DUPE-7"],
+    "billOfLading": ["bol-20161109"],
+    "containerId": ["cont1", "cont2"],
+    "parties": {
+      "shipFrom": {
+        "siteId": "MP-ACME-HONGKONG-2",
+        "location": {
+          "UNLoCode": "ABCDE",
+          "address": {
+            "companyName": "Google HQ",
+            "companyName2": "",
+            "addressLocality": "Courcelles",
+            "addressRegion": "",
+            "country": "BE",
+            "postalCode": "6180",
+            "streetAddress1": "Rue du Luxembourg",
+            "streetAddress2": ""
+          },
+          "coords": {
+            "lat": "1123",
+            "lng": "1234"
+          }
+        }
+      },
+      "shipTo": {
+        "siteId": "MP-ACME-NY-2",
+        "location": {
+          "UNLoCode": "ABCDE",
+          "address": {
+            "addressLocality": "Norderstedt",
+            "addressRegion": "",
+            "companyName": "Elecotest",
+            "companyName2": "",
+            "country": "DE",
+            "postalCode": "22851",
+            "streetAddress1": "",
+            "streetAddress2": ""
+          },
+          "coords": {
+            "lat": "1123",
+            "lng": "1234"
+          }
+        }
+      }
+    }
+  },
+  "lines": [
+    {
+      "lineStatusDateTime": "2016-11-06T01:03:23.000",
+
+      "requestedDeliveryDate": "2016-11-07T12:12:12.000",
+      "promisedDeliveryDate": "2016-11-08T15:15:15.000",
+      "scheduledDeliveryDate": "2016-11-08T00:01:23.000",
+
+      "lineItemId": "001610-04",
+      "asnLineItemId": "12345-123",
+      "materialNumber": "material number",
+      "materialDescription": "material desc",
+      "lotBatchNumber": "lot batch number",
+
+      "salesOrderNumber": "so-22345",
+      "salesOrderLineItemId": "99-010",
+
+      "purchaseOrderNumber": "po-113453",
+      "purchaseOrderLineItemId": "0010-10",
+
+      "deliveryNumber": "dlivery number",
+      "deliveryLineItemId": "di-20161109",
+
+      "shipperInvoiceNumber": "shipper invoice number",
+      "shipperInvoiceLineItemId": "1234-123",
+
+      "carrierCode": "dhl",
+
+      "storageLocation": "STL-123",
+
+      "palletId": "123",
+
+      "quantityOrdered": "2000",
+      "quantityOrderedUom": "TON",
+
+      "quantityReceived": "1500",
+      "quantityReceivedUom": "TON",
+
+      "quantityRejected": "300",
+      "quantityRejectedUom": "TON",
+
+      "quantityOnHold": "100",
+      "quantityOnHoldUom": "TON",
+
+      "quantityReturned": "200",
+      "quantityReturnedUom": "TON"
+    }
+  ]
+}
