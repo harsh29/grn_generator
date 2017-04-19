@@ -95,7 +95,11 @@
             ]
           },
           "lineStatusDateTime": {
-            "type": "string",
+            "format" : "date-time",
+            "pattern": "yyyy-MM-dd'T'HH:mm:ssZ",
+            "faker": {
+                      "date.between": ["2017-01-01", "2017-01-31"]
+            },
             "description": "Status date/time. This is one of the few required fields",
             "escm-type": {
               "type": "date",
@@ -103,21 +107,33 @@
             }
           },
           "requestedDeliveryDate": {
-            "type": "string",
+            "format" : "date-time",
+            "pattern": "yyyy-MM-dd'T'HH:mm:ssZ",
+            "faker": {
+                      "date.between": ["2017-04-01", "2017-04-15"]
+            },
             "escm-type": {
               "type": "date",
               "fatal": false
             }
           },
           "promisedDeliveryDate": {
-            "type": "string",
+            "format" : "date-time",
+            "pattern": "yyyy-MM-dd'T'HH:mm:ssZ",
+            "faker": {
+                      "date.between": ["2017-04-10", "2017-04-17"]
+            },
             "escm-type": {
               "type": "date",
               "fatal": false
             }
           },
           "scheduledDeliveryDate": {
-            "type": "string",
+            "format" : "date-time",
+            "pattern": "yyyy-MM-dd'T'HH:mm:ssZ",
+            "faker": {
+                      "date.between": ["2017-04-05", "2017-04-18"]
+            },
             "escm-type": {
               "type": "date",
               "fatal": false
