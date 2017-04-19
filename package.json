@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-schema-faker": "0.2.10",
+    "faker": "^4.1.0",
+    "json-schema-faker": "^0.5.0-rc1",
     "refaker": "0.3.1"
   }
 }

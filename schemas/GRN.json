@@ -39,19 +39,21 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^carrier-grn-[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{2}$"
+            "pattern": "^carrier-grn-[a-fA-F0-9]{8}-[a-fA-F0-9]{4}$"
           }
         },
         "billOfLading": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^bol-[a-fA-F0-9]{10}$"
           }
         },
         "containerId": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "faker": "random.number"
           }
         },
         "parties": {

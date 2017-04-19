@@ -6,33 +6,44 @@
   "properties": {
     "CustomerName": {
       "type": "string",
-      "minLength": 2
+      "minLength": 2,
+      "pattern": "BASF|JnJ|VERIZON|STARBUCKS"
     },
     "PartnerName": {
       "type": "string",
-      "minLength": 2
+      "minLength": 2,
+      "pattern":"AIP|DHL|UPS"
     },
     "InputDir": {
       "type": "string",
       "description": "Folder where original customer file was located",
-      "minLength": 2
+      "minLength": 2,
+      "faker":"system.directoryPath"
     },
     "SourceFileName": {
       "type": "string",
       "description": "Name of the original customer file",
-      "minLength": 2
+      "minLength": 2,
+      "faker":"system.fileName"
     },
     "FileTimeStamp": {
-      "type": "string",
+      "format" : "date-time",
+      "pattern": "yyyy-MM-dd'T'HH:mm:ssZ",
+      "faker": {
+        "date.between": ["2017-01-01", "2017-03-31"]
+      },
       "description": "Timestamp when Elementum received a customer file (approximate). Determines the order of precedence",
       "escm-type": {
         "type": "date",
-        "fatal": true
+        "fatal": true,
+        "faker":"date.past",
+        "pattern": "yyyy-MM-dd'T'HH:mm:ssZ"
       }
     },
     "FileId": {
       "type": "string",
-      "description": "Unique file id. Has to be a UUID"
+      "description": "Unique file id. Has to be a UUID",
+      "faker":"random.uuid"
     },
     "errors": {
       "type": "object",
