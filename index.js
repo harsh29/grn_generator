@@ -25,7 +25,7 @@
                                 throw err;
           }
           
-          var numberOfFiles = 10;
+          var numberOfFiles = 1;
           if(Number.isInteger(parseInt(args[0]))){
               numberOfFiles = args[0];
           }
@@ -38,7 +38,7 @@
                 if (!fs.existsSync(dir)){
                                           fs.mkdirSync(dir);
                 }
-                fs.writeFile("./output/"+faker.random.number({min:10000, max:100000})+".json", JSON.stringify(sample, null, 2), function(err) {
+                fs.writeFile("./output/"+faker.random.number({min:10000, max:10000000})+".json", JSON.stringify(sample, null, 2), function(err) {
                   if(err) {
                           return console.log(err);
                   }

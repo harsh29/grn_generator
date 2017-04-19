@@ -70,7 +70,13 @@
         }
       },
       "required": [
-        "trackingId", "carrierTrackingId", "billOfLading"
+        "trackingId",
+        "goodsReceiptId",
+        "carrierCode",
+        "carrierTrackingId",
+        "billOfLading",
+        "containerId",
+        "parties"
       ]
     },
     "lines": {
@@ -141,37 +147,46 @@
           },
           "lineItemId": {
             "type": "string",
+            "pattern": "^line-item-id-[a-fA-F0-9]{6}-[a-fA-F0-9]{4}$",
             "description": "GRN line item id (aka line number)"
           },
           "asnLineItemId": {
             "type": "string",
+            "pattern": "^asn-item-id-[a-fA-F0-9]{10}-[a-fA-F0-9]{2}$",
             "description": "Corresponding line number from ASN."
           },
           "materialNumber": {
             "type": "string",
+            "faker":"random.number",
             "description": "Material or goods identifier - what was shipped/received."
           },
           "materialDescription": {
-            "type": "string"
+            "type": "string",
+            "faker": "lorem.sentence"
           },
           "lotBatchNumber": {
             "type": "string",
+            "faker":"random.number",
             "description": "Lot/Batch number"
           },
           "salesOrderNumber": {
             "type": "string",
+            "pattern": "^SO-[a-fA-F0-9]{10}$",
             "description": "SO only"
           },
           "salesOrderLineItemId": {
             "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}$",
             "description": "SO line number"
           },
           "purchaseOrderNumber": {
             "type": "string",
+            "pattern": "^PO-[a-fA-F0-9]{10}$",
             "description": "PO or STO"
           },
           "purchaseOrderLineItemId": {
             "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}$",
             "description": "PO or STO line number"
           },
           "deliveryNumber": {
@@ -253,7 +268,27 @@
         },
         "required": [
           "lineStatus",
-          "lineStatusDateTime"
+          "lineStatusDateTime",
+          "promisedDeliveryDate",
+          "requestedDeliveryDate",
+          "scheduledDeliveryDate",
+          "lineItemId",
+          "asnLineItemId",
+          "materialNumber",
+          "materialDescription",
+          "lotBatchNumber",
+          "salesOrderNumber",
+          "salesOrderLineItemId",
+          "purchaseOrderNumber",
+          "purchaseOrderLineItemId",
+          "deliveryNumber",
+          "deliveryLineItemId",
+          "shipperInvoiceNumber",
+          "shipperInvoiceLineItemId",
+          "carrierCode",
+          "storageLocation",
+          "palletId",
+          "quantityOrdered"
         ]
       }
     }
