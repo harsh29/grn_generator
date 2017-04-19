@@ -7,34 +7,52 @@
       "description": "Specifies address of the location. TODO: determine which fields are required w/ DLM tool",
       "properties": {
         "companyName": {
-          "type": "string"
+          "type": "string",
+          "faker":"company.companyName"
         },
         "companyName2": {
-          "type": "string"
+          "type": "string",
+          "pattern":""
         },
         "streetAddress1": {
-          "type": "string"
+          "type": "string",
+          "faker":"address.streetAddress"
         },
         "streetAddress2": {
-          "type": "string"
+          "type": "string",
+          "faker": "address.secondaryAddress"
         },
         "addressLocality": {
-          "type": "string"
+          "type": "string",
+          "faker":"address.county"
         },
         "addressRegion": {
-          "type": "string"
+          "type": "string",
+          "faker":"address.state"
         },
         "country": {
-          "type": "string"
+          "type": "string",
+          "faker":"address.country"
         },
         "postalCode": {
-          "type": "string"
+          "type": "string",
+          "faker":"address.zipCode"
         }
-      }
+      },
+      "required":["companyName",
+                  "companyName2",
+                  "streetAddress1",
+                  "streetAddress2", 
+                  "addressLocality",
+                  "addressRegion",
+                  "country",
+                  "postalCode"
+                ]
     },
     "UNLoCode": {
       "type": "string",
       "description": "UN LOCODE of the location.",
+      "pattern": "^[A-Z]{5}$",            
       "minLength": 5,
       "maxLength": 5
     },
@@ -44,6 +62,7 @@
       "properties": {
         "lat": {
           "type": "string",
+          "faker":"address.latitude",
           "title": "Latitude",
           "escm-type": {
             "type": "float",
@@ -52,6 +71,7 @@
         },
         "lng": {
           "type": "string",
+          "faker":"address.longitude",
           "title": "Longitude",
           "escm-type": {
             "type": "float",
@@ -59,6 +79,7 @@
           }
         }
       },
+      "required":["lat","lng"],
       "additionalProperties": false
     },
     "location": {
@@ -69,17 +90,7 @@
         "address": { "$ref": "#/definitions/address" },
         "coords": { "$ref": "#/definitions/coordinates" }
       },
-      "anyOf": [
-        {
-          "required": ["address"]
-        },
-        {
-          "required": ["UNLoCode"]
-        },
-        {
-          "required": ["coords"]
-        }
-      ]
+      "required":["UNLoCode","address","coords"]
     }
   }
 }
