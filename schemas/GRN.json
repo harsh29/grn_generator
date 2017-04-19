@@ -66,7 +66,11 @@
             "shipTo": {
               "$ref": "site.json"
             }
-          }
+          },
+            "required": [
+                          "shipFrom",
+                          "shipTo"
+                        ]
         }
       },
       "required": [
@@ -191,79 +195,106 @@
           },
           "deliveryNumber": {
             "type": "string",
+            "pattern": "^DELIVERY-[a-fA-F0-9]{10}$",
             "description": "Delivery document number"
           },
           "deliveryLineItemId": {
             "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}$",
             "description": "Delivery document line item id"
           },
           "shipperInvoiceNumber": {
-            "type": "string"
+            "type": "string",
+            "faker":"random.number"
           },
           "shipperInvoiceLineItemId": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{4}$"
           },
           "carrierCode": {
             "type": "string",
+            "pattern": "dhl|fedex|ups|usps",
             "description": "If line was handled by different carrier than specified in the header. Can be omitted if the same as in header"
           },
           "storageLocation": {
             "type": "string",
+            "pattern": "^STO-[0-9]{6}-[0-9]{2}$",
             "description": "Sub-site, maps to master data. TODO: clarify if our master data has concept of subsites"
           },
           "palletId": {
             "type": "string",
+            "pattern": "^PALLET-[0-9]{8}-[0-9]{1}$",
             "description": "A flat thing used by forklift or front loader or a crane to load goods"
           },
           "quantityOrdered": {
             "type": "string",
+            "faker": {
+              "random.number":[{"min":1000,"max":10000}]
+            },
             "escm-type": {
               "type": "float",
               "fatal": false
             }
           },
           "quantityOrderedUom": {
-            "type": "string"
+            "type": "string",
+            "pattern":"UNITS|KGS|TONS"
           },
           "quantityReceived": {
             "type": "string",
+            "faker": {
+              "random.number":[{"min":1000,"max":6000}]
+            },
             "escm-type": {
               "type": "float",
               "fatal": false
             }
           },
           "quantityReceivedUom": {
-            "type": "string"
+            "type": "string",
+            "pattern":"UNITS|KGS|TONS"
           },
           "quantityRejected": {
             "type": "string",
+            "faker": {
+              "random.number":[{"min":100,"max":500}]
+            },
             "escm-type": {
               "type": "float",
               "fatal": false
             }
           },
           "quantityRejectedUom": {
-            "type": "string"
+            "type": "string",
+            "pattern":"UNITS|KGS|TONS"
           },
           "quantityOnHold": {
             "type": "string",
+            "faker": {
+              "random.number":[{"min":50,"max":100}]
+            },
             "escm-type": {
               "type": "float",
               "fatal": false
             }
           },
           "quantityOnHoldUom": {
-            "type": "string"
+            "type": "string",
+            "pattern":"UNITS|KGS|TONS"
           },
           "quantityReturned": {
             "type": "string",
+            "faker": {
+              "random.number":[{"min":1,"max":50}]
+            },
             "escm-type": {
               "type": "float",
               "fatal": false
             }
           },
           "quantityReturnedUom": {
-            "type": "string"
+            "type": "string",
+            "pattern":"UNITS|KGS|TONS"
           }
         },
         "required": [
@@ -288,7 +319,16 @@
           "carrierCode",
           "storageLocation",
           "palletId",
-          "quantityOrdered"
+          "quantityOrdered",
+          "quantityOrderedUom",
+          "quantityReceived",
+          "quantityReceivedUom",
+          "quantityRejected",
+          "quantityRejectedUom",
+          "quantityOnHold",
+          "quantityOnHoldUom",
+          "quantityReturned",
+          "quantityReturnedUom"
         ]
       }
     }
