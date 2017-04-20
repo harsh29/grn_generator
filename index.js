@@ -36,9 +36,10 @@
                 var dir = './output';
 
                 if (!fs.existsSync(dir)){
-                                          fs.mkdirSync(dir);
+                        fs.mkdirSync(dir);
                 }
-                fs.writeFile("./output/"+faker.random.number({min:10000, max:10000000})+".json", JSON.stringify(sample, null, 2), function(err) {
+                var filename = "./output/"+faker.random.number({min:10000, max:1000000})+".json";
+                fs.writeFile(filename, JSON.stringify(sample, null, 2), function(err) {
                   if(err) {
                           return console.log(err);
                   }

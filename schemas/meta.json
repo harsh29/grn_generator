@@ -18,13 +18,13 @@
       "type": "string",
       "description": "Folder where original customer file was located",
       "minLength": 2,
-      "faker":"system.directoryPath"
+      "pattern": "\/feed\/json\/elecotest\/GRN\/2017\/04\/01|\/feed\/json\/elecotest\/GRN\/2017\/04\/02|\/feed\/json\/elecotest\/GRN\/2017\/04\/03|\/feed\/json\/elecotest\/GRN\/2017\/04\/04|\/feed\/json\/elecotest\/GRN\/2017\/04\/05|\/feed\/json\/elecotest\/GRN\/2017\/04\/06|\/feed\/json\/elecotest\/GRN\/2017\/04\/07"
     },
     "SourceFileName": {
       "type": "string",
+      "pattern": "^FILE-[a-fA-F0-9]{16}[.]{1}json$",
       "description": "Name of the original customer file",
-      "minLength": 2,
-      "faker":"system.fileName"
+      "minLength": 2
     },
     "FileTimeStamp": {
       "format" : "date-time",
