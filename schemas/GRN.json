@@ -4,14 +4,14 @@
   "title": "GRN schema",
   "description": "JSON schema for Goods Received Notification (GRN) data",
   "properties": {
-    "$schema": {
+    "schema": {
       "type": "string",
       "description": "Specifies event type and schema version. TODO: do we want to enforce enum with available values?",
       "enum": [
         "http://elementum.com/schemas/data-ingest/v2/GRN.json"
       ]
     },
-    "$meta": {
+    "meta": {
       "$ref": "meta.json"
     },
     "header": {
@@ -334,8 +334,8 @@
     }
   },
   "required": [
-    "$schema",
-    "$meta",
+    "schema",
+    "meta",
     "header",
     "lines"
   ]
